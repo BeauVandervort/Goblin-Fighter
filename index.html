@@ -4,48 +4,63 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./styles/reset.css" />
-        <link rel="stylesheet" href="./styles/style.css" />
-        <link rel="stylesheet" href="./styles/home.css" />
-        <title>Pokemon Battle</title>
+
+        <title>Pokemon Trainer</title>
+        <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
+
+        <script type="module" src="app.js"></script>
+
+        <link rel="stylesheet" href="styles/reset.css" />
+        <link rel="stylesheet" href="styles/global.css" />
+        <link rel="stylesheet" href="styles/style.css" />
     </head>
 
     <body>
+        <header>
+            <h1><span aria-hidden="true"> </span> Pokemon Trainer</h1>
+        </header>
+
         <main>
             <div class="trainer-stats">
-                <div class="defeated-pokemon">
-                    <p>You have defeated <span id="defeated-number">0</span> Pokemon</p>
-                    <div class="defeated-list"></div>
+                <div class="leveled-pokemon">
+                    <p aria-live="polite">
+                        You have leveled <span id="leveled-number">0</span> Pokemons
+                    </p>
+                    <div class="leveled-list"></div>
                 </div>
-                <div class="Trainer">
-                    <p>
+                <div class="trainer">
+                    <p aria-live="polite">
                         Your HP:
                         <span id="trainer-hp">10</span>
                     </p>
                     <img
                         id="trainer-img"
                         src="./assets/trainer.png"
-                        alt="trainer with black hair and a blue outfit"
+                        alt="cartoon trainer with red hat and pokedex"
                     />
                 </div>
             </div>
             <div class="pokemon-stats">
-                <div>
-                    <form>
-                        <label for="pokemon-name-input">New Pokemon:</label>
-                        <div id="div-form">
-                            <input name="pokemon-name" id="pokemon-name-input" type="text" />
-                            <button type="submit">Challenge Pokemon</button>
+                <form>
+                    <label for="pokemon-name">Name of new Pokemon:</label>
+                    <input name="pokemon-name" id="pokemon-name" type="text" />
+                    <button type="submit">
+                        Caught baby Pokemon <span aria-hidden="true"> 👶 </span>
+                    </button>
+                </form>
+                <div class="pokemons" aria-live="polite">
+                    <div class="pokemon">
+                        <div class="row">
+                            <p>Charmander</p>
+                            <p id="pokemon-hp-3">HP: 3</p>
+                            <img
+                                id="charmander-img"
+                                src="./assets/charmander.png"
+                                alt="Little orange pokemon with flame lit tail"
+                            />
                         </div>
-                    </form>
-                    <div class="pokemons"></div>
-                </div>
-            </div>
+                        
+                                
         </main>
-        <script type="module" src="./app.js"></script>
     </body>
 </html>

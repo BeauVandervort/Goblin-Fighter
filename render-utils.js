@@ -13,13 +13,13 @@ export function renderPokemon(pokemon) {
 
     srEl.classList.add('screen-reader-only');
     srEl.id = `pokemon-sr-${pokemon.id}`;
-    srEl.textContent = pokemon.hp > 0 ? 'baby pokemon' : 'evolved pokemon';
+    srEl.textContent = pokemon.hp > 0 ? 'baby pokemon' : 'leveled pokemon';
 
     babyEl.id = `pokemon-${pokemon.id}`;
-    babyEl.textContent = pokemon.hp > 0 ? '🥚' : '🐣';
+    babyEl.textContent = pokemon.hp > 0 ? 'baby pokemon' : 'leveled pokemon';
 
     if (pokemon.hp < 0) {
-        pokemonEl.classList.add('hatched');
+        pokemonEl.classList.add('leveled');
     }
     pokemonEl.append(nameEl, babyEl, hpEl, srEl);
 

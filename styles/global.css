@@ -33,3 +33,126 @@ header .logo {
 main {
     padding: 20px;
 }
+
+section {
+    background-color: var(--color5);
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: var(--gutter);
+    padding-bottom: var(--gutter);
+    margin-top: var(--gutter);
+    margin-bottom: var(--gutter);
+    border: solid 2px var(--color1);
+}
+
+main {
+    height: 100%;
+    display: flex;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    height: var(--header-height);
+    background-color: #fff394e1;
+    color: #593c02;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+p {
+    margin: var(--gutter);
+}
+
+.trainer-stats {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.trainer img {
+    width: 250px;
+}
+.trainer {
+    color: #593c02;
+    font-size: 5rem;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 5px;
+}
+
+.trainer p {
+    background-color: rgb(215, 177, 27);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.pokemon-stats {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemon-stats input,
+.pokemon-stats button {
+    height: 100px;
+}
+
+.pokemon-stats button {
+    font-size: 2em;
+}
+.pokemon-stats input {
+    font-size: 3rem;
+    width: 80%;
+}
+
+.evolved-pokemons {
+    text-align: center;
+}
+
+.evolved-pokemons p {
+    font-size: 2rem;
+    color: white;
+    background-color: rebeccapurple;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+form {
+    padding: 20px;
+    display: flex;
+}
+
+.pokemon {
+    cursor: pointer;
+    border: solid 3px #0051e6;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    background-color: #ff0000;
+    justify-self: flex-end;
+    font-size: 3rem;
+}
+
+.evolved {
+    opacity: 0.2;
+}
+
+.blacked-out {
+    transform: rotate(90deg);
+}

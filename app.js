@@ -5,14 +5,14 @@ import { renderPokemon } from './render-utils.js';
 const pokemonListEl = document.querySelector('.pokemons');
 const formEl = document.querySelector('form');
 const trainerHPEl = document.querySelector('#trainer-hp');
-const evolvedNumberEl = document.querySelector('#evolved-number');
+const leveledNumberEl = document.querySelector('#evolved-number');
 const trainerImgEl = document.querySelector('#trainer-img');
 
 /* State */
 const pokemons = [
-    { id: 1, name: 'Charmander', hp: 1 },
+    { id: 1, name: 'Charmander', hp: 3 },
     { id: 2, name: 'Bulbasaur', hp: 3 },
-    { id: 3, name: 'Squirtle', hp: 2 },
+    { id: 3, name: 'Squirtle', hp: 3 },
 ];
 let currentId = 4;
 let trainerHP = 3;
@@ -20,12 +20,12 @@ let evolvedCount = 0;
 
 /* Events */
 formEl.addEventListener('submit', (e) => {
-    // prevent default behavior of a form submit
+    
     e.preventDefault();
 
     const data = new FormData(formEl);
 
-    //make a new chick object with the user input
+   
     const newPokemon = {
         id: currentId,
         name: data.get('pokemon-name'),
@@ -67,7 +67,7 @@ function pokemonClickHandler(pokemon) {
 
 
     trainerHPEl.textContent = trainerHP;
-    evolvedNumberEl.textContent = evolvedCount;
+    leveledNumberEl.textContent = leveledCount;
 
     const hpEl = document.getElementById(`pokemon-hp-${pokemon.id}`);
     
@@ -75,11 +75,10 @@ function pokemonClickHandler(pokemon) {
 
     const babyEl = document.getElementById(`pokemon-${pokemon.id}`);
     
-    babyEl.textContent = pokemon.hp > 0 ? '🥚' : '🐣';
+    babyEl.textContent = pokemon.hp > 0 ?
 
     const srEl = document.getElementById(`pokemon-sr-${pokemon.id}`);
-    srEl.textContent = pokemon.hp > 0 ? //'egg emoji' : 'hatched chick emoji';
-}
+    srEl.textContent = pokemon.hp > 0 ? 
 
 /* Display Functions */
 function displayPokemons() {

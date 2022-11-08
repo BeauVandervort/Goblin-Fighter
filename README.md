@@ -36,9 +36,9 @@
 
 ### Functions
 
-        -displayChicks - clear out the list and render the character element for each item
+        -displayCharacters - clear out the list and render the character element for each item
         -renderCharacter - create a check element for the specific character object
-        -chickClickHandler - take care of the game logic which characters are clicked
+        -characterClickHandler - take care of the game logic which characters are clicked
 
 ### Slices
 

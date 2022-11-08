@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles/reset.css" />
+        <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="stylesheet" href="./styles/home.css" />
+        <title>Pokemon Battle</title>
+    </head>
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- title and favicon -->
-    <title>Web App</title>
-    <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
-
-    <!-- js -->
-    <script type="module" src="app.js"></script>
-
-    <!-- fonts -->
-    <!-- see https://fonts.google.com/ -->
-
-    <!-- css -->
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/global.css" />
-    <!-- add link for page specific css -->
-
-</head>
-
-<body>
-    <header>
-        <img class="logo" src="assets/html_css_js.png" alt="logo">
-        <h1>Web App</h1>
-    </header>
-
-    <main>
-
-    </main>
-
-</body>
-
+    <body>
+        <main>
+            <div class="trainer-stats">
+                <div class="defeated-pokemon">
+                    <p>You have defeated <span id="defeated-number">0</span> Pokemon</p>
+                    <div class="defeated-list"></div>
+                </div>
+                <div class="Trainer">
+                    <p>
+                        Your HP:
+                        <span id="trainer-hp">10</span>
+                    </p>
+                    <img
+                        id="trainer-img"
+                        src="./assets/trainer.png"
+                        alt="trainer with black hair and a blue outfit"
+                    />
+                </div>
+            </div>
+            <div class="pokemon-stats">
+                <div>
+                    <form>
+                        <label for="pokemon-name-input">New Pokemon:</label>
+                        <div id="div-form">
+                            <input name="pokemon-name" id="pokemon-name-input" type="text" />
+                            <button type="submit">Challenge Pokemon</button>
+                        </div>
+                    </form>
+                    <div class="pokemons"></div>
+                </div>
+            </div>
+        </main>
+        <script type="module" src="./app.js"></script>
+    </body>
 </html>

@@ -5,7 +5,7 @@ import { renderPokemon } from './render-utils.js';
 const pokemonListEl = document.querySelector('.pokemons');
 const formEl = document.querySelector('form');
 const trainerHPEl = document.querySelector('#trainer-hp');
-const leveledNumberEl = document.querySelector('#evolved-number');
+const leveledNumberEl = document.querySelector('#leveled-number');
 const trainerImgEl = document.querySelector('#trainer-img');
 
 /* State */
@@ -16,16 +16,14 @@ const pokemons = [
 ];
 let currentId = 4;
 let trainerHP = 3;
-let evolvedCount = 0;
+let leveledCount = 0;
 
 /* Events */
 formEl.addEventListener('submit', (e) => {
-    
     e.preventDefault();
 
     const data = new FormData(formEl);
 
-   
     const newPokemon = {
         id: currentId,
         name: data.get('pokemon-name'),
@@ -57,7 +55,7 @@ function pokemonClickHandler(pokemon) {
     }
 
     if (pokemon.hp === 0) {
-        evolvedCount++;
+        leveledCount++;
     }
 
     if (trainerHP === 0) {
@@ -65,21 +63,20 @@ function pokemonClickHandler(pokemon) {
         alert('You Have Blacked Out');
     }
 
-
     trainerHPEl.textContent = trainerHP;
     leveledNumberEl.textContent = leveledCount;
 
     const hpEl = document.getElementById(`pokemon-hp-${pokemon.id}`);
-    
+
     hpEl.textContent = pokemon.hp < 0 ? 0 : pokemon.hp;
 
-    const babyEl = document.getElementById(`pokemon-${pokemon.id}`);
-    
-    babyEl.textContent = pokemon.hp > 0 ?
+    // const babyEl = document.getElementById(`pokemon-${pokemon.id}`);
 
-    const srEl = document.getElementById(`pokemon-sr-${pokemon.id}`);
-    srEl.textContent = pokemon.hp > 0 ? 
+    //babyEl.textContent = pokemon.hp > 0 ?
 
+    //const srEl = document.getElementById(`pokemon-sr-${pokemon.id}`);
+    //srEl.textContent = pokemon.hp > 0 ?
+}
 /* Display Functions */
 function displayPokemons() {
     pokemonListEl.textContent = '';
@@ -92,5 +89,16 @@ function displayPokemons() {
         pokemonListEl.append(pokemonEl);
     }
 }
+
+// //addTrainButton.addEventListener('click', () => {
+//     //if (Math.random() > 0.5) {
+//         alert('You won the battle and leveled up!');
+
+//         Count++;
+//         displayPokemons();
+//     } else {
+//         alert('You lost the battle!');
+//     }
+// });
 
 displayPokemons();

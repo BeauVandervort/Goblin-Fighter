@@ -44,14 +44,14 @@ function pokemonClickHandler(pokemon) {
         pokemon.hp--;
         alert('You leveled up ' + pokemon.name);
     } else {
-        alert('You tried to level up ' + pokemon.name + ' but the pokemon fainted');
+        alert('You tried to level up ' + pokemon.name + ' but the pokemon disobeyed');
     }
 
     if (Math.random() < 0.5) {
         trainerHP--;
-        alert(pokemon.name + ' disobeyed and attacked his trainer!');
+        alert(pokemon.name + ' attacked his trainer!');
     } else {
-        alert(pokemon.name + ' disobeyed and took a break');
+        //alert(pokemon.name + ' disobeyed and took a break');
     }
 
     if (pokemon.hp === 0) {

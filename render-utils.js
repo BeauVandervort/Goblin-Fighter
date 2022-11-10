@@ -1,27 +1,25 @@
-export function renderPokemon(pokemon) {
-    const pokemonEl = document.createElement('div');
+export function renderGoblin(goblinData) {
+    const goblinEl = document.createElement('div');
+    const faceEl = document.createElement('p');
     const nameEl = document.createElement('p');
-    //const babyEl = document.createElement('p');
     const hpEl = document.createElement('p');
-    //const srEl = document.createElement('span');
 
-    pokemonEl.classList.add('pokemon');
+    goblinEl.classList.add('goblin');
 
-    nameEl.textContent = pokemon.name;
-    hpEl.textContent = pokemon.hp < 0 ? 0 : pokemon.hp;
-    hpEl.id = `pokemon-hp-${pokemon.id}`;
+    nameEl.textContent = goblinData.name;
+    hpEl.id = `goblin-hp-${goblinData.id}`;
+    hpEl.textContent = goblinData.hp < 0 ? 0 : goblinData.hp;
 
-    //srEl.classList.add('screen-reader-only');
-    //srEl.id = `pokemon${pokemon.id}`;
-    //srEl.textContent = pokemon.hp > 0 ? 'baby pokemon' : 'leveled pokemon';
+    // use a weird "ternary" to set the face
+    // if the goblin lives, do a imp emoji, else do a fire emoji
+    faceEl.id = `goblin-face-${goblinData.id}`;
+    faceEl.textContent = goblinData.hp > 0 ? '😈' : '🔥';
 
-    // babyEl.id = `pokemon-${pokemon.id}`;
-    //babyEl.textContent = pokemon.hp > 0 ? 'baby pokemon' : 'leveled pokemon';
-
-    if (pokemon.hp < 0) {
-        pokemonEl.classList.add('leveled');
+    if (goblinData.hp < 0) {
+        goblinEl.classList.add('dead');
     }
-    pokemonEl.append(nameEl, hpEl);
 
-    return pokemonEl;
+    goblinEl.append(nameEl, faceEl, hpEl);
+
+    return goblinEl;
 }

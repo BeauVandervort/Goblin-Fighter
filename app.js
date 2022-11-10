@@ -1,104 +1,98 @@
-/* Imports */
-import { renderPokemon } from './render-utils.js';
+// import functions and grab DOM elements
+import { renderGoblin } from './render-utils.js';
+const defeatedNumberEl = document.querySelector('#defeated-number');
+const adventurerHPEl = document.querySelector('#adventurer-hp');
+const adventurerImgEl = document.querySelector('#adventurer-img');
+const form = document.querySelector('form');
+const goblinListEl = document.querySelector('.goblins');
 
-/* Get DOM Elements */
-const pokemonListEl = document.querySelector('.pokemons');
-const formEl = document.querySelector('form');
-const trainerHPEl = document.querySelector('#trainer-hp');
-const leveledNumberEl = document.querySelector('#leveled-number');
-const trainerImgEl = document.querySelector('#trainer-img');
-
-/* State */
-const pokemons = [
-    { id: 1, name: 'Charmander', hp: 3 },
-    { id: 2, name: 'Bulbasaur', hp: 3 },
-    { id: 3, name: 'Squirtle', hp: 3 },
+// let state
+let defeatedGoblinsCount = 0;
+let playerHP = 10;
+let goblins = [
+    { id: 1, name: 'Terry', hp: 1 },
+    { id: 2, name: 'Professor Goblin', hp: 4 },
 ];
-let currentId = 4;
-let trainerHP = 3;
-let leveledCount = 0;
+let currentId = 3;
 
-/* Events */
-formEl.addEventListener('submit', (e) => {
+// - New goblin form
+form.addEventListener('submit', (e) => {
     e.preventDefault();
+    //   - User has supplied a name and submitted the form
+    const data = new FormData(form);
 
-    const data = new FormData(formEl);
+    const goblinName = data.get('goblin-name');
 
-    const newPokemon = {
+    //   - Make a new goblin object with that user input
+
+    const newGoblin = {
         id: currentId,
-        name: data.get('pokemon-name'),
+        name: goblinName,
         hp: Math.ceil(Math.random() * 5),
     };
-
     currentId++;
 
-    pokemons.push(newPokemon);
+    //   - Add that object to the array of goblins in state
+    goblins.push(newGoblin);
 
-    displayPokemons();
+    displayGoblins();
 });
 
-function pokemonClickHandler(pokemon) {
-    if (pokemon.hp <= 0) return;
-
+function goblinClickHandler(goblinData) {
+    if (goblinData.hp <= 0) return;
     if (Math.random() < 0.33) {
-        pokemon.hp--;
-        alert('You leveled up ' + pokemon.name);
+        goblinData.hp--;
+        alert('you hit ' + goblinData.name);
     } else {
-        alert('You tried to level up ' + pokemon.name + ' but the pokemon disobeyed');
+        alert('you tried to hit ' + goblinData.name + ' but missed');
     }
-
+    //  - possibly decrement player HP
     if (Math.random() < 0.5) {
-        trainerHP--;
-        alert(pokemon.name + ' attacked his trainer!');
+        playerHP--;
+        alert(goblinData.name + ' hit you!');
     } else {
-        //alert(pokemon.name + ' disobeyed and took a break');
+        alert(goblinData.name + ' tried to hit you but missed!');
     }
 
-    if (pokemon.hp === 0) {
-        leveledCount++;
+    if (goblinData.hp === 0) {
+        defeatedGoblinsCount++;
     }
 
-    if (trainerHP === 0) {
-        trainerImgEl.classList.add('blacked-out');
-        alert('You Have Blacked Out');
+    if (playerHP === 0) {
+        adventurerImgEl.classList.add('game-over');
+        alert('GAME OVER!!!');
     }
+    //     - update the DOM with new goblin, player, and defeated goblin state.
+    adventurerHPEl.textContent = playerHP;
+    defeatedNumberEl.textContent = defeatedGoblinsCount;
 
-    trainerHPEl.textContent = trainerHP;
-    leveledNumberEl.textContent = leveledCount;
+    const hpEl = document.getElementById(`goblin-hp-${goblinData.id}`);
+    hpEl.textContent = goblinData.hp < 0 ? 0 : goblinData.hp;
 
-    const hpEl = document.getElementById(`pokemon-hp-${pokemon.id}`);
-
-    hpEl.textContent = pokemon.hp < 0 ? 0 : pokemon.hp;
-
-    // const babyEl = document.getElementById(`pokemon-${pokemon.id}`);
-
-    //babyEl.textContent = pokemon.hp > 0 ?
-
-    //const srEl = document.getElementById(`pokemon-sr-${pokemon.id}`);
-    //srEl.textContent = pokemon.hp > 0 ?
+    const faceEl = document.getElementById(`goblin-face-${goblinData.id}`);
+    faceEl.textContent = goblinData.hp > 0 ? '😈' : '🔥';
 }
-/* Display Functions */
-function displayPokemons() {
-    pokemonListEl.textContent = '';
 
-    for (let pokemon of pokemons) {
-        const pokemonEl = renderPokemon(pokemon);
-        pokemonEl.addEventListener('click', () => {
-            pokemonClickHandler(pokemon);
+function displayGoblins() {
+    //   - "update a list"
+    //     - clear out the list DOM
+    goblinListEl.textContent = '';
+
+    //     - loop through the goblins
+    for (let goblin of goblins) {
+        //     - render a new goblin DOM element for each item
+        const goblinEl = renderGoblin(goblin);
+        // - append that element to the HTML
+
+        // now that we have a goblin element, we can make each goblin clickable like so
+        // this is a DYNAMIC EVENT LISTENER. we make a new event listener for every goblin!
+        // an event listener is a property just like anything else. just like text content, just like style. we add it to elements.
+        goblinEl.addEventListener('click', () => {
+            goblinClickHandler(goblin);
         });
-        pokemonListEl.append(pokemonEl);
+
+        goblinListEl.append(goblinEl);
     }
 }
 
-// //addTrainButton.addEventListener('click', () => {
-//     //if (Math.random() > 0.5) {
-//         alert('You won the battle and leveled up!');
-
-//         Count++;
-//         displayPokemons();
-//     } else {
-//         alert('You lost the battle!');
-//     }
-// });
-
-displayPokemons();
+displayGoblins();

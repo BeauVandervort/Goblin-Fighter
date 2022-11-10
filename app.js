@@ -18,6 +18,7 @@ let currentId = 3;
 // - New goblin form
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (playerHP === 0) return;
     //   - User has supplied a name and submitted the form
     const data = new FormData(form);
 
@@ -40,6 +41,7 @@ form.addEventListener('submit', (e) => {
 
 function goblinClickHandler(goblinData) {
     if (goblinData.hp <= 0) return;
+    if (playerHP === 0) return;
     if (Math.random() < 0.33) {
         goblinData.hp--;
         alert('you hit ' + goblinData.name);

@@ -1,39 +1,50 @@
-<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles/reset.css" />
+        <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="stylesheet" href="./styles/home.css" />
+        <title>Alchemy Goblin Fighter</title>
+    </head>
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- title and favicon -->
-    <title>Web App</title>
-    <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
-
-    <!-- js -->
-    <script type="module" src="app.js"></script>
-
-    <!-- fonts -->
-    <!-- see https://fonts.google.com/ -->
-
-    <!-- css -->
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/global.css" />
-    <!-- add link for page specific css -->
-
-</head>
-
-<body>
-    <header>
-        <img class="logo" src="assets/html_css_js.png" alt="logo">
-        <h1>Web App</h1>
-    </header>
-
-    <main>
-
-    </main>
-
-</body>
-
+    <body>
+        <main>
+            <div class="adventurer-stats">
+                <div class="defeated-goblins">
+                    <p>You have defeated <span id="defeated-number">0</span> goblins</p>
+                    <div class="defeated-list"></div>
+                </div>
+                <div class="adventurer">
+                    <p>
+                        Your HP:
+                        <span id="adventurer-hp">10</span>
+                    </p>
+                    <img
+                        id="adventurer-img"
+                        src="./assets/adventurer.png"
+                        alt="adventurer with blonde hair and a brown outfit"
+                    />
+                </div>
+            </div>
+            <div class="goblin-stats">
+                <div>
+                    <form>
+                        <label for="goblin-name-input">New Goblin:</label>
+                        <div id="div-form">
+                            <input name="goblin-name" id="goblin-name-input" type="text" />
+                            <button type="submit">Challenge goblin</button>
+                        </div>
+                    </form>
+                    <div class="goblins"></div>
+                </div>
+            </div>
+        </main>
+        <script type="module" src="./app.js"></script>
+    </body>
 </html>

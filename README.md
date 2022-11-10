@@ -1,27 +1,47 @@
-## The Golden Rule:
+![wireframe](/assets/wireframe.png)
 
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
+# Plan
 
-If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
+### HTML elements (page load)
 
-## Making a plan
+        -input for adding new (character) with a button
+        -span for tracking added levels
+        -span for tracking trainer HP
+        -character list
 
-1. **Make a drawing of your app. Simple "wireframes"**
-1. **Look at the drawing and name the HTML elements you'll need to realize your vision**
-1. **Look at the drawing and imagine using the app. What _state_ do you need to track?**
-1. **For each HTML element ask: Why do I need this? (i.e., "we need div to display the results in")**
-1. **Once we know _why_ we need each element, think about how to implement the "Why" as a "How" (i.e., `resultsEl.textContent = newResults`)**
-1. **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change? Does any DOM update?**
-1. **Think about how to validate each of your features according to a Definition of Done. (Hint: console.log usually helps here.)**
-1. **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
+### State
 
-Additional considerations:
+        -array of characters (object with new character id, name, hp)
+        -number of leveled up characters
+        -trainer hp
+        -currentID (in order to create new characters with id)
 
--   Ask: which of your HTML elements need to be hard coded, and which need to be dynamically generated?
--   Consider your data model.
-    -   What kinds of objects (i.e., Dogs, Friends, Todos, etc) will you need?
-    -   What are the key/value pairs?
-    -   What arrays might you need?
-    -   What needs to live in a persistence layer?
--   Is there some state we need to initialize?
--   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be reused?)
+### Events
+
+        -each character is clickable
+            -on click...
+                possibly decrement the character hp
+                possibly decrement the trainer hp
+                possibly increment the leveled character
+                update the DOM with new character and trainer hp and leveled characters state
+        -new character form (on submit)
+            -user supplied name and submit form
+            -make new character object
+            -add object to characters array
+            - "update list display"
+                -clear out the list DOM
+                -loop through the characters
+                -render a new character element for each item
+                -append each el to the container el
+
+### Functions
+
+        -displayCharacters - clear out the list and render the character element for each item
+        -renderCharacter - create a check element for the specific character object
+        -characterClickHandler - take care of the game logic which characters are clicked
+
+### Slices
+
+        1 - rendering characters list to page
+        2 - form to create new chicks
+        3 - gamification (resulting impacts to HP on user clicks)
